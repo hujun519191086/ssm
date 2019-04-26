@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-123123123
+<div><img th:src="http://localhost:8080/book/captcha" onclick="this.src='${base}/captcha.jpg?'+Math.random()"/></div>
+<div class="input_capt">验证码: <input type="text" id="captcha" name="captcha"/></div>
 </body>
 </html>
