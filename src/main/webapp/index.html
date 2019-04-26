@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="static/js/jquery-3.4.0.js" th:src="@{/static/js/jquery-3.4.0.js}" ></script>
+
+    <script th:inline="javascript">
+        $(function(){
+            /*<![CDATA[*/
+            var ctxPath = /*[[@{/${#httpServletRequest.getContextPath()}}]]*/ '';
+            /*]]>*/
+
+            $("#picImg").attr("src",ctxPath+'/ssm/book/captcha');
+            console.info(ctxPath);
+            console.info(ctxPath);
+            console.info(ctxPath);
+            console.info(ctxPath);
+        });
+    </script>
 </head>
 <body>
-<div><img th:src="http://localhost:8080/book/captcha" onclick="this.src='${base}/captcha.jpg?'+Math.random()"/></div>
+
+<!-- Project ContextPath -->
+<input type="hidden" id="ctx" th:value="${application.ctx}" /> Hello,
+<span th:text="${name}" />!
+<br /> Hello,
+<span th:text="${query}" />!
+<br /> Hello,
+<span th:text="${submit}" />!
+<br />
+<a th:href="@{/query?name=a_href}"> query</a>
+<br />
+<form th:action="@{/submit}">
+    <input type="text" name="name" />
+    <button type="submit">submit</button>
+</form>
+
+
+
+<form th:action="@{/submit}">
+    <input type="text" name="name" />
+    <button type="submit">submit</button>
+</form>
+<div><img id="picImg" th:src="@{/book/captcha.jpg}"  onclick="this.src='http://localhost:8080/book/captcha?'+Math.random()"/></div>
 <div class="input_capt">验证码: <input type="text" id="captcha" name="captcha"/></div>
 </body>
 </html>
